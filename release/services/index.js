@@ -6,4 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./scrollbar-helper.service"));
 __export(require("./dimensions-helper.service"));
 __export(require("./column-changes.service"));
+__export(require("./visibility.service"));
 //# sourceMappingURL=index.js.map

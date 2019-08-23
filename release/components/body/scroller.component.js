@@ -21,6 +21,7 @@ var ScrollerComponent = /** @class */ (function () {
         this.scrollXPos = 0;
         this.prevScrollYPos = 0;
         this.prevScrollXPos = 0;
+        this._scrollEventListener = null;
         this.element = element.nativeElement;
     }
     ScrollerComponent.prototype.ngOnInit = function () {
@@ -28,12 +29,14 @@ var ScrollerComponent = /** @class */ (function () {
         if (this.scrollbarV || this.scrollbarH) {
             var renderer = this.renderer;
             this.parentElement = renderer.parentNode(renderer.parentNode(this.element));
-            this.parentElement.addEventListener('scroll', this.onScrolled.bind(this));
+            this._scrollEventListener = this.onScrolled.bind(this);
+            this.parentElement.addEventListener('scroll', this._scrollEventListener);
         }
     };
     ScrollerComponent.prototype.ngOnDestroy = function () {
-        if (this.scrollbarV || this.scrollbarH) {
-            this.parentElement.removeEventListener('scroll', this.onScrolled.bind(this));
+        if (this._scrollEventListener) {
+            this.parentElement.removeEventListener('scroll', this._scrollEventListener);
+            this._scrollEventListener = null;
         }
     };
     ScrollerComponent.prototype.setOffset = function (offsetY) {

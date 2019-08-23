@@ -14,6 +14,7 @@ export declare class ScrollerComponent implements OnInit, OnDestroy {
     element: any;
     parentElement: any;
     onScrollListener: any;
+    private _scrollEventListener;
     constructor(ngZone: NgZone, element: ElementRef, renderer: Renderer2);
     ngOnInit(): void;
     ngOnDestroy(): void;

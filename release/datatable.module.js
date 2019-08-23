@@ -14,7 +14,21 @@ var services_1 = require("./services");
 var NgxDatatableModule = /** @class */ (function () {
     function NgxDatatableModule() {
     }
-    NgxDatatableModule = __decorate([
+    NgxDatatableModule_1 = NgxDatatableModule;
+    /**
+     * Configure global configuration via INgxDatatableConfig
+     * @param configuration
+     */
+    NgxDatatableModule.forRoot = function (configuration) {
+        return {
+            ngModule: NgxDatatableModule_1,
+            providers: [
+                { provide: 'configuration', useValue: configuration },
+            ]
+        };
+    };
+    var NgxDatatableModule_1;
+    NgxDatatableModule = NgxDatatableModule_1 = __decorate([
         core_1.NgModule({
             imports: [
                 common_1.CommonModule
@@ -22,7 +36,8 @@ var NgxDatatableModule = /** @class */ (function () {
             providers: [
                 services_1.ScrollbarHelper,
                 services_1.DimensionsHelper,
-                services_1.ColumnChangesService
+                services_1.ColumnChangesService,
+                services_1.VisibilityService
             ],
             declarations: [
                 components_1.DataTableFooterTemplateDirective,
